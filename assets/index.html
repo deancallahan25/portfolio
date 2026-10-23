@@ -1,0 +1,1390 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Dean Callahan | Data Science & Research</title>
+  <meta name="description" content="Dean Callahan's academic and research portfolio in data science and computer science.">
+  <meta name="author" content="Dean Callahan">
+  <meta name="theme-color" content="#101c2c">
+
+  <meta property="og:title" content="Dean Callahan | Portfolio">
+  <meta property="og:description" content="Data science and Computer Science">
+  <meta property="og:type" content="website">
+
+  <style>
+    /* ========================================
+       1. DESIGN SYSTEM
+    ======================================== */
+    :root {
+      --bg: #f7f8f6;
+      --surface: #ffffff;
+      --text: #18242d;
+      --muted: #62717c;
+      --primary: #176b59;
+      --primary-dark: #104d40;
+      --accent: #d9e9df;
+      --border: #dfe5e1;
+      --nav-bg: rgba(247, 248, 246, 0.94);
+      --max-width: 1120px;
+      --radius: 16px;
+      --shadow: 0 8px 30px rgba(20, 40, 35, 0.06);
+    }
+
+    [data-theme="dark"] {
+      --bg: #101821;
+      --surface: #19242e;
+      --text: #edf2f4;
+      --muted: #a6b4be;
+      --primary: #75c9a8;
+      --primary-dark: #a2e0c3;
+      --accent: #243c36;
+      --border: #30404b;
+      --nav-bg: rgba(16, 24, 33, 0.94);
+      --shadow: 0 8px 30px rgba(0, 0, 0, 0.14);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+                   Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.7;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: var(--primary-dark);
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--primary);
+      outline-offset: 4px;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    .container {
+      width: min(var(--max-width), 90%);
+      margin-inline: auto;
+    }
+
+    .section {
+      padding: 88px 0;
+    }
+
+    .section-heading {
+      max-width: 720px;
+      margin-bottom: 38px;
+    }
+
+    .eyebrow {
+      color: var(--primary);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3 {
+      line-height: 1.2;
+      letter-spacing: -0.035em;
+    }
+
+    h1 {
+      font-size: clamp(2.8rem, 7vw, 5.3rem);
+      margin: 18px 0;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin: 12px 0;
+    }
+
+    h3 {
+      font-size: 1.25rem;
+    }
+
+    p {
+      color: var(--muted);
+    }
+
+    .section-intro {
+      font-size: 1.05rem;
+      max-width: 680px;
+    }
+
+    /* ========================================
+       2. NAVIGATION
+    ======================================== */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--nav-bg);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      color: var(--text);
+      font-weight: 800;
+      font-size: 1.05rem;
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .nav-actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .icon-button,
+    .menu-toggle {
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      padding: 9px 12px;
+      border-radius: 10px;
+      cursor: pointer;
+      font: inherit;
+    }
+
+    .menu-toggle {
+      display: none;
+    }
+
+    /* ========================================
+       3. BUTTONS
+    ======================================== */
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 19px;
+      border: 1px solid var(--primary);
+      border-radius: 9px;
+      font-weight: 700;
+      font-size: 0.93rem;
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .button-primary {
+      background: var(--primary);
+      color: #ffffff;
+    }
+
+    .button-primary:hover {
+      background: var(--primary-dark);
+      color: #ffffff;
+    }
+
+    .button-secondary {
+      color: var(--primary);
+      background: transparent;
+    }
+
+    /* ========================================
+       4. HERO AND PROFILE PHOTO
+    ======================================== */
+    .hero {
+      padding: 110px 0 100px;
+      background: radial-gradient(
+        ellipse at 85% 10%,
+        var(--accent), transparent 45%
+      );
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 0.8fr;
+      align-items: center;
+      gap: 65px;
+    }
+
+    .hero h1 span {
+      color: var(--primary);
+    }
+
+    .hero-description {
+      max-width: 660px;
+      font-size: 1.12rem;
+      margin-bottom: 30px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 25px;
+    }
+
+    .hero-note {
+      margin-top: 28px;
+      font-size: 0.88rem;
+    }
+
+    .hero-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 30px;
+      box-shadow: var(--shadow);
+    }
+
+    .profile-photo {
+      display: block;
+      width: 170px;
+      height: 170px;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 50%;
+      border: 4px solid var(--accent);
+      margin: 0 auto 25px;
+    }
+
+    .hero-card-label {
+      color: var(--primary);
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .research-list {
+      list-style: none;
+      padding: 0;
+      margin: 22px 0 0;
+    }
+
+    .research-list li {
+      border-top: 1px solid var(--border);
+      padding: 13px 0;
+      font-weight: 600;
+      font-size: 0.94rem;
+    }
+
+    .research-list li::before {
+      content: "↗";
+      color: var(--primary);
+      margin-right: 10px;
+    }
+
+    /* ========================================
+       5. ABOUT
+    ======================================== */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 55px;
+      align-items: start;
+    }
+
+    .about-copy p {
+      font-size: 1.02rem;
+    }
+
+    .principle {
+      background: var(--accent);
+      border-radius: var(--radius);
+      padding: 30px;
+    }
+
+    .principle blockquote {
+      margin: 12px 0;
+      font-size: 1.35rem;
+      line-height: 1.5;
+      font-weight: 650;
+      letter-spacing: -0.02em;
+    }
+
+    .principle p {
+      font-size: 0.9rem;
+    }
+
+    /* ========================================
+       6. RESEARCH AND PROJECT CARDS
+    ======================================== */
+    .alternate-section {
+      background: var(--surface);
+      border-block: 1px solid var(--border);
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .card {
+      padding: 27px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .card-number {
+      color: var(--primary);
+      font-weight: 800;
+      font-size: 0.82rem;
+      letter-spacing: 0.1em;
+    }
+
+    .card h3 {
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      font-size: 0.94rem;
+      overflow-wrap: anywhere;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin: 12px 0 20px;
+    }
+
+    .tag {
+      background: var(--accent);
+      color: var(--text);
+      border-radius: 6px;
+      padding: 4px 9px;
+      font-size: 0.76rem;
+      font-weight: 650;
+    }
+
+    .card-link {
+      margin-top: auto;
+      padding-top: 8px;
+      font-weight: 700;
+      font-size: 0.92rem;
+    }
+
+    /* ========================================
+       7. RESEARCH POSTERS
+    ======================================== */
+    .poster-card {
+      overflow-wrap: anywhere;
+    }
+
+    .poster-filename {
+      padding: 10px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-family: monospace;
+      font-size: 0.76rem !important;
+      line-height: 1.5;
+    }
+
+    .poster-note {
+      font-size: 0.9rem;
+      margin-top: 22px;
+    }
+
+    /* ========================================
+       8. SKILLS
+    ======================================== */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .skill-group {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+    }
+
+    .skill-group h3 {
+      margin-top: 0;
+    }
+
+    .skill-group p {
+      margin-bottom: 0;
+    }
+
+    /* ========================================
+       9. EXPERIENCE TIMELINE
+    ======================================== */
+    .timeline {
+      max-width: 850px;
+      border-left: 2px solid var(--border);
+      margin-left: 8px;
+      padding-left: 30px;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-bottom: 32px;
+    }
+
+    .timeline-item:last-child {
+      padding-bottom: 0;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -37px;
+      top: 7px;
+      width: 12px;
+      height: 12px;
+      background: var(--primary);
+      border: 3px solid var(--bg);
+      border-radius: 50%;
+    }
+
+    .timeline-date {
+      color: var(--primary);
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .timeline-item h3 {
+      margin: 6px 0;
+    }
+
+    .timeline-item p {
+      margin-top: 8px;
+    }
+
+    /* ========================================
+       10. CONTACT
+    ======================================== */
+    .contact-panel {
+      background: var(--accent);
+      border-radius: 24px;
+      padding: clamp(30px, 6vw, 65px);
+      text-align: center;
+    }
+
+    .contact-panel p {
+      max-width: 620px;
+      margin: 15px auto 28px;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 22px;
+    }
+
+    .contact-links a {
+      font-weight: 700;
+    }
+
+    /* ========================================
+       11. FOOTER
+    ======================================== */
+    footer {
+      padding: 30px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    footer p {
+      margin: 0;
+      font-size: 0.85rem;
+    }
+
+    .back-to-top {
+      font-weight: 700;
+    }
+
+    /* ========================================
+       12. RESPONSIVE DESIGN
+    ======================================== */
+    @media (max-width: 900px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+
+      .hero {
+        padding-top: 80px;
+      }
+
+      .card-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .nav-links {
+        gap: 14px;
+      }
+
+      .nav-links a {
+        font-size: 0.82rem;
+      }
+    }
+
+    @media (max-width: 650px) {
+      .section {
+        padding: 65px 0;
+      }
+
+      .nav-inner {
+        flex-wrap: wrap;
+        padding: 12px 0;
+      }
+
+      .menu-toggle {
+        display: inline-block;
+      }
+
+      .nav-links {
+        display: none;
+        flex-basis: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 8px 0;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links a {
+        padding: 11px 0;
+        font-size: 0.95rem;
+      }
+
+      .hero {
+        padding: 65px 0;
+      }
+
+      .about-grid,
+      .card-grid,
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-buttons .button {
+        width: 100%;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *, *::before, *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVIGATION -->
+  <header class="navbar">
+    <nav class="container nav-inner" aria-label="Main navigation">
+      <a class="brand" href="#home">Dean Callahan.</a>
+
+      <div class="nav-actions">
+        <button
+          class="icon-button"
+          id="theme-toggle"
+          type="button"
+          aria-label="Switch color theme"
+          title="Switch color theme">
+          ☾
+        </button>
+
+        <button
+          class="menu-toggle"
+          id="menu-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="nav-links">
+          Menu ☰
+        </button>
+      </div>
+
+      <div class="nav-links" id="nav-links">
+        <a href="#about">About</a>
+        <a href="#research">Research</a>
+        <a href="#posters">Posters</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+
+        <div>
+          <div class="eyebrow">
+            Data Science · Applied Mathematics · Economics
+          </div>
+
+          <h1>
+            Turning data into
+            <span>meaningful insights.</span>
+          </h1>
+
+          <p class="hero-description">
+            I am Dean Callahan, a data science and computer science researcher interested
+            in machine learning.
+          </p>
+
+          <div class="hero-buttons">
+            <a class="button button-primary" href="#research">
+              Explore My Research →
+            </a>
+
+            <a
+              class="button button-secondary"
+              href="assets/Resume_Dean_Callahan.pdf">
+              View My CV ↗
+            </a>
+
+            <!-- Replace with your actual LinkedIn profile URL -->
+            <a
+              class="button button-secondary"
+              href="https://www.linkedin.com/in/dean-callahan-046122227"
+              target="_blank"
+              rel="noopener noreferrer">
+              LinkedIn ↗
+            </a>
+          </div>
+
+          <p class="hero-note">
+            Cal Poly Humboldt · Data Science & Computer Science
+          </p>
+        </div>
+
+        <aside class="hero-card" aria-label="Profile and research interests">
+
+          <!-- Put your photo at assets/images/profile.jpg -->
+          <img
+            class="profile-photo"
+            src="assets/images/profile.jpg"
+            alt="Portrait of Dean Callahan Juarez">
+
+          <div class="hero-card-label">Research interests</div>
+
+          <h2 style="font-size: 1.65rem;">
+            Questions worth investigating.
+          </h2>
+
+          <ul class="research-list">
+            <li>Machine Learning & Statistical Modeling</li>
+            
+          </ul>
+        </aside>
+
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section" id="about">
+      <div class="container">
+
+        <div class="section-heading">
+          <div class="eyebrow">About me</div>
+          <h2>Connecting technical methods with real-world problems.</h2>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-copy">
+            <p>
+              My academic interests lie at the intersection of data science,
+              applied mathematics, economics, and environmental research.
+              I am interested in how quantitative tools can help us better
+              understand the systems that shape communities and the environment.
+            </p>
+
+            <p>
+              Through research experiences and interdisciplinary projects,
+              I have worked with environmental datasets, statistical methods,
+              predictive modeling, geospatial analysis, and data integration.
+              These experiences have strengthened my interest in building
+              analytical approaches that are both technically rigorous
+              and useful for decision-making.
+            </p>
+
+            <p>
+              My long-term goal is to contribute to research that connects
+              computational methods with environmental sustainability,
+              economic opportunity, and evidence-based public policy.
+            </p>
+          </div>
+
+          <div class="principle">
+            <div class="eyebrow">My approach</div>
+
+            <blockquote>
+              Tools age. Reasoning does not.
+            </blockquote>
+
+            <p>
+              I value reproducible analysis, careful interpretation,
+              transparent assumptions, and asking the right questions
+              before choosing the right model.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- RESEARCH -->
+    <section class="section alternate-section" id="research">
+      <div class="container">
+
+        <div class="section-heading">
+          <div class="eyebrow">Research</div>
+          <h2>Investigating complex systems through data.</h2>
+          <p class="section-intro">
+            Selected research areas where computational methods meet
+            environmental science, economics, and community outcomes.
+          </p>
+        </div>
+
+        <div class="card-grid">
+
+          <article class="card">
+            <div class="card-number">RESEARCH 01</div>
+            <h3>Monitoring Anthropogenic Methane Emissions</h3>
+
+            <p>
+              Integrating agricultural emissions data from multiple sources
+              to investigate missing observations, improve data coverage,
+              and support near-real-time monitoring of methane emissions.
+            </p>
+
+            <div class="tags">
+              <span class="tag">Python</span>
+              <span class="tag">XGBoost</span>
+              <span class="tag">SHAP</span>
+              <span class="tag">Imputation</span>
+            </div>
+
+            <a class="card-link" href="#posters">
+              View related research poster →
+            </a>
+          </article>
+
+          <article class="card">
+            <div class="card-number">RESEARCH 02</div>
+            <h3>Wildfire, Vegetation & Climate</h3>
+
+            <p>
+              Examining relationships among forest change, vegetation
+              indices, drought conditions, wildfire history, and potential
+              ignition patterns through geospatial analysis.
+            </p>
+
+            <div class="tags">
+              <span class="tag">Google Earth Engine</span>
+              <span class="tag">GIS</span>
+              <span class="tag">Remote Sensing</span>
+              <span class="tag">Machine Learning</span>
+            </div>
+
+            <a class="card-link" href="#posters">
+              View related research posters →
+            </a>
+          </article>
+
+          <article class="card">
+            <div class="card-number">RESEARCH 03</div>
+            <h3>Community Resilience & Economic Shocks</h3>
+
+            <p>
+              Investigating how extreme events affect public resources,
+              local institutions, and community outcomes using longitudinal
+              data and causal inference methods.
+            </p>
+
+            <div class="tags">
+              <span class="tag">Econometrics</span>
+              <span class="tag">Stata</span>
+              <span class="tag">Panel Data</span>
+              <span class="tag">Causal Inference</span>
+            </div>
+
+            <a class="card-link" href="#posters">
+              Explore research posters →
+            </a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- RESEARCH POSTERS -->
+    <section class="section" id="posters">
+      <div class="container">
+
+        <div class="section-heading">
+          <div class="eyebrow">Research archive</div>
+          <h2>Research posters & presentations.</h2>
+          <p class="section-intro">
+            A chronological collection of research posters covering
+            environmental science, remote sensing, machine learning,
+            mathematical modeling, and community resilience.
+          </p>
+        </div>
+
+        <div class="card-grid">
+
+          <!-- 2024 POSTER -->
+          <article class="card poster-card">
+            <div class="card-number">2024 · POSTER 01</div>
+            <h3>Remote Sensing for Forest Health and Wildfire Mitigation</h3>
+
+            <p>
+              Research poster on remote sensing applications for forest
+              health and wildfire mitigation.
+            </p>
+
+            <p class="poster-filename">
+              2024_Remote_Sensing_for_Forest_Health_and_Wildfire_Mitigation.pdf
+            </p>
+
+            <a
+              class="card-link"
+              href="assets/posters/2024_Remote_Sensing_for_Forest_Health_and_Wildfire_Mitigation.pdf"
+              target="_blank"
+              rel="noopener noreferrer">
+              Open poster PDF ↗
+            </a>
+          </article>
+
+          <!-- 2025 POSTER -->
+          <article class="card poster-card">
+            <div class="card-number">2025 · POSTER 02</div>
+            <h3>Near-Real-Time Monitoring of Gridded Livestock Methane Emissions Using Multi-Source Data Integration</h3>
+
+            <p>
+              Multi-source data integration and modeling for monitoring
+              gridded livestock methane emissions.
+            </p>
+
+            <p class="poster-filename">
+              2025_Near_Real_Time_Monitoring_of_Gridded_Livestock_Methane_Emissions_Using_Multi-Source_Data_Integration.pdf
+            </p>
+
+            <a
+              class="card-link"
+              href="assets/posters/2025_Near_Real_Time_Monitoring_of_Gridded_Livestock_Methane_Emissions_Using_Multi-Source_Data_Integration.pdf"
+              target="_blank"
+              rel="noopener noreferrer">
+              Open poster PDF ↗
+            </a>
+          </article>
+
+          <!-- 2025 POSTER -->
+          <article class="card poster-card">
+            <div class="card-number">2025 · POSTER 03</div>
+            <h3>Lightning-Driven Wildfire Risk and Forest Loss in Six Rivers National Forest</h3>
+
+            <p>
+              Geospatial analysis of wildfire history, lightning,
+              forest loss, vegetation, and environmental conditions
+              in Six Rivers National Forest.
+            </p>
+
+            <p class="poster-filename">
+              2025_Lightning_Driven_Wildfire_Risk_and_Forest_Loss_in_Six_Rivers_National_Forest.pdf
+            </p>
+
+            <a
+              class="card-link"
+              href="assets/posters/2025_Lightning_Driven_Wildfire_Risk_and_Forest_Loss_in_Six_Rivers_National_Forest.pdf"
+              target="_blank"
+              rel="noopener noreferrer">
+              Open poster PDF ↗
+            </a>
+          </article>
+
+          <!-- 2026 POSTER -->
+          <article class="card poster-card">
+            <div class="card-number">2026 · POSTER 04</div>
+            <h3>MCM Problem A: Modeling Smartphone Battery Drain — Cal Poly Humboldt</h3>
+
+            <p>
+              Mathematical modeling of smartphone battery drain
+              for the Mathematical Contest in Modeling.
+            </p>
+
+            <p class="poster-filename">
+              2026_MCM_Problem_A_Modeling_Smartphone_Battery_Drain_Cal_Poly_Humboldt.pdf
+            </p>
+
+            <a
+              class="card-link"
+              href="assets/posters/2026_MCM_Problem_A_Modeling_Smartphone_Battery_Drain_Cal_Poly_Humboldt.pdf"
+              target="_blank"
+              rel="noopener noreferrer">
+              Open poster PDF ↗
+            </a>
+          </article>
+
+          <!-- 2026 POSTER -->
+          <article class="card poster-card">
+            <div class="card-number">2026 · POSTER 05</div>
+            <h3>University of Kansas ARISE — KDSC</h3>
+
+            <p>
+              Research completed through the University of Kansas
+              ARISE / Kansas Data Science Consortium program.
+            </p>
+
+            <p class="poster-filename">
+              2026_University_of_Kansas_ARISE_KDSC.pdf
+            </p>
+
+            <a
+              class="card-link"
+              href="assets/posters/2026_University_of_Kansas_ARISE_KDSC.pdf"
+              target="_blank"
+              rel="noopener noreferrer">
+              Open poster PDF ↗
+            </a>
+          </article>
+
+        </div>
+
+        <p class="poster-note">
+          Place all five PDF files in the
+          <code>assets/posters/</code> directory. Filenames must match
+          the links above exactly.
+        </p>
+
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="section alternate-section" id="projects">
+      <div class="container">
+
+        <div class="section-heading">
+          <div class="eyebrow">Selected work</div>
+          <h2>Projects, methods, and applications.</h2>
+          <p class="section-intro">
+            A growing collection of analytical projects, reproducible
+            workflows, and experiments with data.
+          </p>
+        </div>
+
+        <div class="card-grid">
+
+          <article class="card">
+            <div class="card-number">PROJECT 01</div>
+            <h3>Environmental Data Pipeline</h3>
+
+            <p>
+              A reproducible workflow for collecting, cleaning, joining,
+              validating, and analyzing datasets from multiple sources.
+            </p>
+
+            <div class="tags">
+              <span class="tag">Python</span>
+              <span class="tag">Pandas</span>
+              <span class="tag">SQL</span>
+            </div>
+
+            <a
+              class="card-link"
+              href="https://github.com/YOUR-USERNAME"
+              target="_blank"
+              rel="noopener noreferrer">
+              View on GitHub ↗
+            </a>
+          </article>
+
+          <article class="card">
+            <div class="card-number">PROJECT 02</div>
+            <h3>Exploratory Data Analysis</h3>
+
+            <p>
+              An analytical study using descriptive statistics, visualization,
+              and statistical modeling to identify patterns and communicate
+              findings.
+            </p>
+
+            <div class="tags">
+              <span class="tag">R</span>
+              <span class="tag">Statistics</span>
+              <span class="tag">Visualization</span>
+            </div>
+
+            <a
+              class="card-link"
+              href="https://github.com/YOUR-USERNAME"
+              target="_blank"
+              rel="noopener noreferrer">
+              View on GitHub ↗
+            </a>
+          </article>
+
+          <article class="card">
+            <div class="card-number">PROJECT 03</div>
+            <h3>Spatial Analysis & Mapping</h3>
+
+            <p>
+              A geospatial project combining geographic data, spatial
+              visualization, and environmental indicators to investigate
+              regional patterns.
+            </p>
+
+            <div class="tags">
+              <span class="tag">GIS</span>
+              <span class="tag">Python</span>
+              <span class="tag">Geospatial Data</span>
+            </div>
+
+            <a
+              class="card-link"
+              href="https://github.com/YOUR-USERNAME"
+              target="_blank"
+              rel="noopener noreferrer">
+              View on GitHub ↗
+            </a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="section" id="skills">
+      <div class="container">
+
+        <div class="section-heading">
+          <div class="eyebrow">Technical toolkit</div>
+          <h2>Methods I use to investigate problems.</h2>
+        </div>
+
+        <div class="skills-grid">
+
+          <article class="skill-group">
+            <h3>Programming & Data</h3>
+
+            <div class="tags">
+              <span class="tag">Python</span>
+              <span class="tag">SQL</span>
+              <span class="tag">R</span>
+              <span class="tag">Java</span>
+              <span class="tag">Pandas</span>
+              <span class="tag">NumPy</span>
+            </div>
+
+            <p>
+              Data cleaning, transformation, integration, database querying,
+              and reproducible analytical workflows.
+            </p>
+          </article>
+
+          <article class="skill-group">
+            <h3>Statistics & Machine Learning</h3>
+
+            <div class="tags">
+              <span class="tag">Regression</span>
+              <span class="tag">ANOVA</span>
+              <span class="tag">XGBoost</span>
+              <span class="tag">Scikit-learn</span>
+              <span class="tag">SHAP</span>
+            </div>
+
+            <p>
+              Statistical inference, predictive modeling, model evaluation,
+              feature interpretation, and quantitative analysis.
+            </p>
+          </article>
+
+          <article class="skill-group">
+            <h3>Geospatial & Environmental Data</h3>
+
+            <div class="tags">
+              <span class="tag">Google Earth Engine</span>
+              <span class="tag">QGIS</span>
+              <span class="tag">ArcGIS</span>
+              <span class="tag">Remote Sensing</span>
+            </div>
+
+            <p>
+              Spatial data processing, satellite-derived indicators,
+              geographic visualization, and environmental monitoring.
+            </p>
+          </article>
+
+          <article class="skill-group">
+            <h3>Research & Communication</h3>
+
+            <div class="tags">
+              <span class="tag">Data Visualization</span>
+              <span class="tag">Technical Writing</span>
+              <span class="tag">Research Design</span>
+              <span class="tag">Git</span>
+            </div>
+
+            <p>
+              Research synthesis, transparent reporting, scientific
+              communication, and collaborative project development.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section class="section alternate-section" id="experience">
+      <div class="container">
+
+        <div class="section-heading">
+          <div class="eyebrow">Experience & involvement</div>
+          <h2>Learning through research and collaboration.</h2>
+        </div>
+
+        <div class="timeline">
+
+          <article class="timeline-item">
+            <div class="timeline-date">2025 · Research Experience</div>
+            <h3>Stanford University — Environmental Research</h3>
+
+            <p>
+              Contributed to research on anthropogenic methane emissions
+              through multi-source data integration, missing-data
+              imputation, predictive modeling, and model interpretation.
+            </p>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-date">2025–Present · Research</div>
+            <h3>Forest Change & Wildfire Analysis</h3>
+
+            <p>
+              Investigated environmental change using remote sensing,
+              climate indicators, historical wildfire records, and
+              geospatial analysis.
+            </p>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-date">2026 · Research Experience</div>
+            <h3>Economic Resilience & Public Institutions</h3>
+
+            <p>
+              Explored how extreme events affect public resources and
+              community outcomes through longitudinal data and
+              econometric methods.
+            </p>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-date">Campus Leadership</div>
+            <h3>Data Science Club & Sustainability</h3>
+
+            <p>
+              Supporting interdisciplinary learning, student research,
+              sustainability education, and community-centered projects.
+            </p>
+          </article>
+
+        </div>
+
+        <p style="margin-top: 30px;">
+          <a
+            class="button button-secondary"
+            href="assets/Resume_Dean_Callahan.pdf">
+            View Full CV ↗
+          </a>
+        </p>
+
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section" id="contact">
+      <div class="container">
+
+        <div class="contact-panel">
+          <div class="eyebrow">Get in touch</div>
+          <h2>Let's connect through research.</h2>
+
+          <p>
+            I welcome conversations about research opportunities,
+            graduate study, data science, environmental sustainability,
+            and interdisciplinary collaboration.
+          </p>
+
+          <div class="contact-links">
+
+            <!-- Replace with your actual email -->
+            <a href="mailto:YOUR-EMAIL@example.com">
+              Email ↗
+            </a>
+
+            <!-- Replace YOUR-USERNAME with your GitHub username -->
+            <a
+              href="https://github.com/YOUR-USERNAME"
+              target="_blank"
+              rel="noopener noreferrer">
+              GitHub ↗
+            </a>
+
+            <!-- Replace YOUR-LINKEDIN with your LinkedIn profile URL -->
+            <a
+              href="https://www.linkedin.com/in/YOUR-LINKEDIN/"
+              target="_blank"
+              rel="noopener noreferrer">
+              LinkedIn ↗
+            </a>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer-inner">
+      <p>
+        © <span id="year"></span> Dean Callahan. Built with HTML, CSS & JavaScript.
+      </p>
+
+      <a class="back-to-top" href="#home">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <script>
+    // Automatically update the copyright year.
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+    // Mobile navigation.
+    const menuToggle = document.getElementById("menu-toggle");
+    const navLinks = document.getElementById("nav-links");
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("open");
+
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.textContent = isOpen ? "Close ×" : "Menu ☰";
+    });
+
+    // Close mobile navigation after selecting a section.
+    navLinks.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.textContent = "Menu ☰";
+      });
+    });
+
+    // Light/dark theme toggle.
+    const themeToggle = document.getElementById("theme-toggle");
+
+    themeToggle.addEventListener("click", () => {
+      const isDark =
+        document.documentElement.getAttribute("data-theme") === "dark";
+
+      document.documentElement.setAttribute(
+        "data-theme",
+        isDark ? "light" : "dark"
+      );
+
+      themeToggle.textContent = isDark ? "☾" : "☀";
+      themeToggle.setAttribute(
+        "aria-label",
+        isDark ? "Switch to dark theme" : "Switch to light theme"
+      );
+    });
+  </script>
+
+</body>
+</html>
